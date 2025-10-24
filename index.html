@@ -10,6 +10,15 @@
     <link rel="preload" href="images/beholder_azure.png" as="image" fetchpriority="high">
     <link rel="preload" href="images/wraamon.png" as="image" fetchpriority="high">
     <link rel="preload" href="images/argus_scarlet.png" as="image" fetchpriority="high">
+    <script>
+        // Redirect to mobile.html for mobile devices
+        (function() {
+            const isMobile = window.innerWidth < 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            if (isMobile) {
+                window.location.replace('mobile.html');
+            }
+        })();
+    </script>
     <style>
         /* RLCraft-themed custom styles */
         body {
@@ -17,12 +26,12 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            background-color: rgba(45, 35, 32, 0.9); /* Dark overlay for readability */
+            background-color: rgba(45, 35, 32, 0.9);
             background-blend-mode: overlay;
             color: #e2d7b5;
             font-family: 'IM Fell English', serif;
-            letter-spacing: 0.02em; /* Subtle letter spacing for a handcrafted feel */
-            text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3), -0.5px -0.5px 1px rgba(255, 255, 255, 0.1); /* Embossed effect for body text */
+            letter-spacing: 0.02em;
+            text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3), -0.5px -0.5px 1px rgba(255, 255, 255, 0.1);
         }
         .section-card {
             background-color: rgba(44, 36, 31, 0.75);
@@ -36,49 +45,48 @@
             transform: translateY(-4px);
             box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
         }
-        /* Scrollbar styling for WebKit browsers */
         .section-card::-webkit-scrollbar {
             width: 8px;
         }
         .section-card::-webkit-scrollbar-track {
-            background: #5b4b3a; /* Matches border color */
+            background: #5b4b3a;
             border-radius: 4px;
         }
         .section-card::-webkit-scrollbar-thumb {
-            background: #8A7B38; /* Matches header color */
+            background: #8A7B38;
             border-radius: 4px;
         }
         .section-card::-webkit-scrollbar-thumb:hover {
-            background: #4E1361; /* Darker gold for hover */
+            background: #4E1361;
         }
         .checkbox-custom {
             appearance: none;
             width: 1.25rem;
             height: 1.25rem;
-            border: 1px solid #C46133; /* Red border for unchecked state */
+            border: 1px solid #C46133;
             border-radius: 0.25rem;
             background-color: transparent;
             vertical-align: middle;
             position: relative;
-            transition: transform 0.05s ease, box-shadow 0.05s ease; /* Fast transition for snappy feel */
+            transition: transform 0.05s ease, box-shadow 0.05s ease;
         }
         .checkbox-custom:checked {
             background-size: cover;
             background-position: center;
             border: none;
-            box-shadow: 0 0 20px rgba(38, 166, 44, 1); /* Green glow for checked state */
-            background-image: var(--checkbox-image); /* Dynamic image set via JavaScript */
+            box-shadow: 0 0 20px rgba(38, 166, 44, 1);
+            background-image: var(--checkbox-image);
         }
         .checkbox-custom:hover {
-            transform: scale(1.15); /* Slightly larger scale for responsiveness */
-            box-shadow: 0 0 12px rgba(200, 100, 50, 0.9); /* Brighter orange glow on hover */
+            transform: scale(1.15);
+            box-shadow: 0 0 12px rgba(200, 100, 50, 0.9);
         }
         label {
-            transition: color 0.05s ease, text-shadow 0.05s ease; /* Fast transition for snappy feel */
+            transition: color 0.05s ease, text-shadow 0.05s ease;
         }
         label:hover {
-            color: #f4e8c1; /* Brighter text on hover */
-            text-shadow: 0 0 8px rgba(200, 100, 50, 0.8); /* Subtle glow for responsiveness */
+            color: #f4e8c1;
+            text-shadow: 0 0 8px rgba(200, 100, 50, 0.8);
         }
         .note {
             background-color: rgba(69, 54, 43, 0.8);
@@ -90,62 +98,34 @@
         }
         h1, h2, h3 {
             font-family: 'Pirata One', serif;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5), -1px -1px 2px rgba(255, 255, 255, 0.2); /* Enhanced shadow for engraved effect */
-            background: linear-gradient(45deg, rgba(255, 231, 41, 0.9), rgba(255, 231, 41, 0.5), rgba(255, 231, 41, 0.3)); /* Parchment-like texture */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5), -1px -1px 2px rgba(255, 255, 255, 0.2);
+            background: linear-gradient(45deg, rgba(255, 231, 41, 0.9), rgba(255, 231, 41, 0.5), rgba(255, 231, 41, 0.3));
             -webkit-background-clip: text;
             background-clip: text;
-            color: transparent; /* Allows gradient to show through */
+            color: transparent;
         }
         h1 {
-            font-size: 3rem; /* Main title, overrides text-4xl (2.25rem) */
+            font-size: 3rem;
         }
         h2 {
-            font-size: 2.25rem; /* Section titles, overrides text-2xl (1.5rem) */
+            font-size: 2.25rem;
         }
         h3 {
-            font-size: 1.5rem; /* Subsection titles, overrides text-xl (1.25rem) */
+            font-size: 1.5rem;
         }
         .divider {
             border-top: 2px solid #493A5B;
             margin: 1.5rem 0;
         }
         .curse-text {
-            color: #d32f2f; /* Red to match previous theme */
-            text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.4), 0 0 4px rgba(211, 47, 47, 0.5); /* Subtle red glow */
+            color: #d32f2f;
+            text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.4), 0 0 4px rgba(211, 47, 47, 0.5);
         }
         .rune-text {
-            color: #1FB512; /* Dark green for readability */
-            text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.4), 0 0 4px rgba(31, 181, 18, 0.5); /* Subtle green glow */
+            color: #1FB512;
+            text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.4), 0 0 4px rgba(31, 181, 18, 0.5);
         }
     </style>
-    <script>
-        // Array of checkmark images
-        const checkmarkImages = [
-            'images/dragon.png',
-            'images/beholder_azure.png',
-            'images/wraamon.png',
-            'images/argus_scarlet.png'
-        ];
-
-        // Function to get a random image URL
-        function getRandomImage() {
-            return checkmarkImages[Math.floor(Math.random() * checkmarkImages.length)];
-        }
-
-        // Apply random image to each checkbox on change
-        document.addEventListener('DOMContentLoaded', () => {
-            const checkboxes = document.querySelectorAll('.checkbox-custom');
-            checkboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', () => {
-                    if (checkbox.checked) {
-                        checkbox.style.setProperty('--checkbox-image', `url('${getRandomImage()}')`);
-                    } else {
-                        checkbox.style.removeProperty('--checkbox-image');
-                    }
-                });
-            });
-        });
-    </script>
 </head>
 <body class="min-h-screen p-6">
     <div class="max-w-[95%] mx-auto">
@@ -292,5 +272,33 @@
             </div>
         </div>
     </div>
+    <script>
+        // Array of checkmark images
+        const checkmarkImages = [
+            'images/dragon.png',
+            'images/beholder_azure.png',
+            'images/wraamon.png',
+            'images/argus_scarlet.png'
+        ];
+
+        // Function to get a random image URL
+        function getRandomImage() {
+            return checkmarkImages[Math.floor(Math.random() * checkmarkImages.length)];
+        }
+
+        // Apply random image to each checkbox on change
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkboxes = document.querySelectorAll('.checkbox-custom');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', () => {
+                    if (checkbox.checked) {
+                        checkbox.style.setProperty('--checkbox-image', `url('${getRandomImage()}')`);
+                    } else {
+                        checkbox.style.removeProperty('--checkbox-image');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
