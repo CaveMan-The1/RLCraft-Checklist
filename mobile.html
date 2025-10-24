@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RLCraft Enchantment Checklist - Mobile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:wght@400;700&family=Pirata+One&display=swap" rel="stylesheet">
+    <link rel="preload" href="images/dragon.png" as="image" fetchpriority="high">
+    <link rel="preload" href="images/beholder_azure.png" as="image" fetchpriority="high">
+    <link rel="preload" href="images/wraamon.png" as="image" fetchpriority="high">
+    <link rel="preload" href="images/argus_scarlet.png" as="image" fetchpriority="high">
+    <style>
+        body {
+            background-image: url('https://rlcraft.wiki.gg/images/thumb/RLCraftPackImage.png/360px-RLCraftPackImage.png?72c53e');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-color: rgba(45, 35, 32, 0.9);
+            background-blend-mode: overlay;
+            color: #e2d7b5;
+            font-family: 'IM Fell English', serif;
+            letter-spacing: 0.02em;
+            text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3), -0.5px -0.5px 1px rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+        }
+        .section-card {
+            background-color: rgba(44, 36, 31, 0.75);
+            border: 2px solid #493A5B;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        .section-card::-webkit-scrollbar {
+            width: 6px;
+        }
+        .section-card::-webkit-scrollbar-track {
+            background: #5b4b3a;
+            border-radius: 4px;
+        }
+        .section-card::-webkit-scrollbar-thumb {
+            background: #8A7B38;
+            border-radius: 4px;
+        }
+        .section-card::-webkit-scrollbar-thumb:hover {
+            background: #4E1361;
+        }
+        .checkbox-custom {
+            appearance: none;
+            width: 2rem;
+            height: 2rem;
+            border: 1px solid #C46133;
+            border-radius: 0.25rem;
+            background-color: transparent;
+            vertical-align: middle;
+            position: relative;
+            transition: transform 0.05s ease, box-shadow 0.05s ease;
+        }
+        .checkbox-custom:checked {
+            background-size: cover;
+            background-position: center;
+            border: none;
+            box-shadow: 0 0 15px rgba(38, 166, 44, 1);
+            background-image: var(--checkbox-image);
+        }
+        .checkbox-custom:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(200, 100, 50, 0.9);
+        }
+        label {
+            transition: color 0.05s ease, text-shadow 0.05s ease;
+            font-size: 0.9rem;
+        }
+        label:hover {
+            color: #f4e8c1;
+            text-shadow: 0 0 6px rgba(200, 100, 50, 0.8);
+        }
+        .note {
+            background-color: rgba(69, 54, 43, 0.8);
+            border-left: 3px solid #d4a017;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            margin-top: 0.75rem;
+            color: #f4e8c1;
+            font-size: 0.85rem;
+        }
+        h1, h2, h3 {
+            font-family: 'Pirata One', serif;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5), -1px -1px 2px rgba(255, 255, 255, 0.2);
+            background: linear-gradient(45deg, rgba(255, 231, 41, 0.9), rgba(255, 231, 41, 0.5), rgba(255, 231, 41, 0.3));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        h1 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin: 1rem 0 0.5rem;
+        }
+        .divider {
+            border-top: 1px solid #493A5B;
+            margin: 1rem 0;
+        }
+        .curse-text {
+            color: #d32f2f;
+            text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.4), 0 0 4px rgba(211, 47, 47, 0.5);
+        }
+        .rune-text {
+            color: #1FB512;
+            text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.4), 0 0 4px rgba(31, 181, 18, 0.5);
+        }
+    </style>
+    <script>
+        // Array of checkmark images
+        const checkmarkImages = [
+            'images/dragon.png',
+            'images/beholder_azure.png',
+            'images/wraamon.png',
+            'images/argus_scarlet.png'
+        ];
+
+        // Function to get a random image URL
+        function getRandomImage() {
+            return checkmarkImages[Math.floor(Math.random() * checkmarkImages.length)];
+        }
+
+        // Apply random image to each checkbox on change
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkboxes = document.querySelectorAll('.checkbox-custom');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', () => {
+                    if (checkbox.checked) {
+                        checkbox.style.setProperty('--checkbox-image', `url('${getRandomImage()}')`);
+                    } else {
+                        checkbox.style.removeProperty('--checkbox-image');
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="max-w-full mx-auto">
+        <h1 class="font-bold">RLCraft Enchantment Checklist - Mobile</h1>
+
+        <!-- Stacked sections for mobile -->
+        <!-- Armor Section -->
+        <div class="section-card">
+            <h2 class="font-semibold">Armor Cheat Sheet</h2>
+            <div class="divider"></div>
+            
+            <h3 class="font-medium">Base</h3>
+            <ul class="space-y-1">
+                <li><input type="checkbox" id="armor_base_ap" class="checkbox-custom"><label for="armor_base_ap" class="ml-2">Advanced Protection IV</label></li>
+                <li><input type="checkbox" id="armor_base_unbr" class="checkbox-custom"><label for="armor_base_unbr" class="ml-2">Unbreaking IV</label></li>
+                <li><input type="checkbox" id="armor_base_mend" class="checkbox-custom"><label for="armor_base_mend" class="ml-2">Mending *</label></li>
+                <li><input type="checkbox" id="armor_base_heat" class="checkbox-custom"><label for="armor_base_heat" class="ml-2">Heating (if having heat immunity)</label></li>
+                <li><input type="checkbox" id="armor_base_chill" class="checkbox-custom"><label for="armor_base_chill" class="ml-2">Chilling (if having cold immunity)</label></li>
+            </ul>
+
+            <h3 class="font-medium">Helmet</h3>
+            <ul class="space-y-1">
+                <li><input type="checkbox" id="helmet_resp" class="checkbox-custom"><label for="helmet_resp" class="ml-2">Respiration III</label></li>
+                <li><input type="checkbox" id="helmet_aqua" class="checkbox-custom"><label for="helmet_aqua" class="ml-2">Aqua Affinity</label></li>
+            </ul>
+
+            <h3 class="font-medium">Chestplate</h3>
+            <ul class="space-y-1">
+                <li><input type="checkbox" id="chest_vital" class="checkbox-custom"><label for="chest_vital" class="ml-2">Strengthened Vitality V</label></li>
+                <li><input type="checkbox" id="chest_berserk" class="checkbox-custom"><label for="chest_berserk" class="ml-2">Inner Berserk IV</label></li>
+            </ul>
+
+            <h3 class="font-medium">Leggings</h3>
+            <ul class="space-y-1">
+                <li><input type="checkbox" id="legs_agility" class="checkbox-custom"><label for="legs_agility" class="ml-2">Agility II</label></li>
+            </ul>
+
+            <h3 class="font-medium">Boots</h3>
+            <ul class="space-y-1">
+                <li><input type="checkbox" id="boots_ff" class="checkbox-custom"><label for="boots_ff" class="ml-2">Advanced Feather Falling IV</label></li>
+                <li><input type="checkbox" id="boots_lw" class="checkbox-custom"><label for="boots_lw" class="ml-2">Light Weight III</label></li>
+                <li><input type="checkbox" id="boots_dj" class="checkbox-custom"><label for="boots_dj" class="ml-2">Double Jump</label></li>
+                <li><input type="checkbox" id="boots_us" class="checkbox-custom"><label for="boots_us" class="ml-2">Underwater Strider III **</label></li>
+                <li><input type="checkbox" id="boots_hj" class="checkbox-custom"><label for="boots_hj" class="ml-2">High Jump II</label></li>
+            </ul>
+
+            <div class="note">
+                <p>* Mending got a fix to prioritize most damaged equipment first. Advanced Mending did not. Advanced Mending still repairs more per xp but is randomly applied to any equipment with the enchant, meaning getting unlucky in the lost cities leads to certain death.</p>
+                <p>The most efficient is a mix between Mending and Advanced Mending and, in my personal opinion, I feel armour being prioritized when it gets low is better than weapons. Hence, Mending on armour, Advanced Mending on weapons. Consider a swap.</p>
+                <p>** Underwater Strider, unlike Depth Strider, gives vertical speed in water allowing you to not sink to the bottom while wearing golem and/or while in dragon form.</p>
+                <p>Underwater Strider does, however, not work in 1-block deep water.</p>
+            </div>
+        </div>
+
+        <!-- Ranged Section -->
+        <div class="section-card">
+            <h2 class="font-semibold">Ranged Cheat Sheet</h2>
+            <div class="divider"></div>
+            
+            <h3 class="font-medium">Base</h3>
+            <ul class="space-y-1">
+                <li><input type="checkbox" id="ranged_base_pow" class="checkbox-custom"><label for="ranged_base_pow" class="ml-2">Advanced Power V</label></li>
+                <li><input type="checkbox" id="ranged_base_rune" class="checkbox-custom"><label for="ranged_base_rune" class="ml-2 rune-text">Rune: Arrow Piercing IV</label></li>
+                <li><input type="checkbox" id="ranged_base_mend" class="checkbox-custom"><label for="ranged_base_mend" class="ml-2">Advanced Mending</label></li>
+                <li><input type="checkbox" id="ranged_base_supflame" class="checkbox-custom"><label for="ranged_base_supflame" class="ml-2">Supreme Flame</label></li>
+                <li><input type="checkbox" id="ranged_base_adept" class="checkbox-custom"><label for="ranged_base_adept" class="ml-2">Adept III</label></li>
+                <li><input type="checkbox" id="ranged_base_range" class="checkbox-custom"><label for="ranged_base_range" class="ml-2">Range</label></li>
+                <li><input type="checkbox" id="ranged_base_curse" class="checkbox-custom"><label for="ranged_base_curse" class="ml-2 curse-text">Curse of Possession *</label></li>
+                <li><input type="checkbox" id="ranged_base_unbr" class="checkbox-custom"><label for="ranged_base_unbr" class="ml-2">Unbreaking IV**</label></li>
+            </ul>
+
+            <h3 class="font-medium">Bow</h3>
+            <ul class="space-y-1">
+                <li><input type="checkbox" id="bow_multi" class="checkbox-custom"><label for="bow_multi" class="ml-2">Multishot IV / Splitshot IV</label></li>
+                <li><input type="checkbox" id="bow_strafe" class="checkbox-custom"><label for="bow_strafe" class="ml-2">Strafe IV ***</label></li>
+                <li><input type="checkbox" id="bow_rapid" class="checkbox-custom"><label for="bow_rapid" class="ml-2">Rapid Fire II</label></li>
+                <li><input type="checkbox" id="bow_arrowrec" class="checkbox-custom"><label for="bow_arrowrec" class="ml-2">Arrow Recovery III</label></li>
+            </ul>
+
+            <div class="note">
+                <p>* Protects against sticky mobs but will delete item upon death</p>
+                <p>** Prioritize putting Unbreaking IV on armour before weapons</p>
+                <p>*** Strafe is required for the Sentient Greatbow, otherwise, use Infinity instead. (Arrow Recovery is also not required if using Infinity)</p>
+            </div>
+        </div>
+
+        <!-- Melee Section -->
+        <div class="section-card">
+            <h2 class="font-semibold">Melee Cheat Sheet</h2>
+            <div class="divider"></div>
+            
+            <h3 class="font-medium">Base</h3>
+            <ul class="space-y-1">
+                <li><input type="checkbox" id="melee_base_sharp" class="checkbox-custom"><label for="melee_base_sharp" class="ml-2">Supreme Sharpness V</label></li>
+                <li><input type="checkbox" id="melee_base_swifter" class="checkbox-custom"><label for="melee_base_swifter" class="ml-2">Swifter Slashes V</label></li>
+                <li><input type="checkbox" id="melee_base_rune" class="checkbox-custom"><label for="melee_base_rune" class="ml-2 rune-text">Rune: Piercing Capabilities IV</label></li>
+                <li><input type="checkbox" id="melee_base_arc" class="checkbox-custom"><label for="melee_base_arc" class="ml-2">Arc Slash III</label></li>
+                <li><input type="checkbox" id="melee_base_pe" class="checkbox-custom"><label for="melee_base_pe" class="ml-2">Subject P.E. V *</label></li>
+                <li><input type="checkbox" id="melee_base_loot" class="checkbox-custom"><label for="melee_base_loot" class="ml-2">Advanced Looting III</label></li>
+                <li><input type="checkbox" id="melee_base_enven" class="checkbox-custom"><label for="melee_base_enven" class="ml-2">Envenomed III</label></li>
+                <li><input type="checkbox" id="melee_base_adept" class="checkbox-custom"><label for="melee_base_adept" class="ml-2">Adept III</label></li>
+                <li><input type="checkbox" id="melee_base_lifesteal" class="checkbox-custom"><label for="melee_base_lifesteal" class="ml-2">Lifesteal II</label></li>
+                <li><input type="checkbox" id="melee_base_vamp" class="checkbox-custom"><label for="melee_base_vamp" class="ml-2">Vampirism II</label></li>
+                <li><input type="checkbox" id="melee_base_atomic" class="checkbox-custom"><label for="melee_base_atomic" class="ml-2">Atomic Deconstructor II</label></li>
+                <li><input type="checkbox" id="melee_base_parry" class="checkbox-custom"><label for="melee_base_parry" class="ml-2">Parry</label></li>
+                <li><input type="checkbox" id="melee_base_curse" class="checkbox-custom"><label for="melee_base_curse" class="ml-2 curse-text">Curse of Possession **</label></li>
+                <li><input type="checkbox" id="melee_base_unbr" class="checkbox-custom"><label for="melee_base_unbr" class="ml-2">Unbreaking IV ***</label></li>
+                <li><input type="checkbox" id="melee_base_mend" class="checkbox-custom"><label for="melee_base_mend" class="ml-2">Advanced Mending</label></li>
+                <li><input type="checkbox" id="melee_base_combo" class="checkbox-custom"><label for="melee_base_combo" class="ml-2">Combo III (for nunchakus)</label></li>
+                <li><input type="checkbox" id="melee_base_clearsky" class="checkbox-custom"><label for="melee_base_clearsky" class="ml-2">Clearskies Favor VI (optional)</label></li>
+            </ul>
+
+            <h3 class="font-medium">Pick one of two</h3>
+            <div class="space-y-2">
+                <div class="flex items-start gap-2">
+                    <span class="text-xs max-w-[100px] whitespace-normal">Alt. 1 deals significantly more (around Double) damage than Alt. 2.</span>
+                    <div class="flex flex-row items-start flex-1">
+                        <span class="font-bold mt-1">1.</span>
+                        <ul class="space-y-1 ml-3">
+                            <li><input type="checkbox" id="melee_alt1_viper" class="checkbox-custom"><label for="melee_alt1_viper" class="ml-2">Viper V</label></li>
+                            <li><input type="checkbox" id="melee_alt1_ash" class="checkbox-custom"><label for="melee_alt1_ash" class="ml-2">Ash Destroyer V</label></li>
+                            <li><input type="checkbox" id="melee_alt1_fire" class="checkbox-custom"><label for="melee_alt1_fire" class="ml-2">Supreme Fire Aspect II</label></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="flex items-start gap-2">
+                    <span class="text-xs max-w-[100px] whitespace-normal">Alt. 2's Mortalitas (8 dmg) ignores parasite adaptation.</span>
+                    <div class="flex flex-row items-start flex-1">
+                        <span class="font-bold mt-1">2.</span>
+                        <ul class="space-y-1 ml-3">
+                            <li><input type="checkbox" id="melee_alt2_mortal" class="checkbox-custom"><label for="melee_alt2_mortal" class="ml-2">Mortalitas VIII</label></li>
+                            <li><input type="checkbox" id="melee_alt2_fiery" class="checkbox-custom"><label for="melee_alt2_fiery" class="ml-2">Fiery Edge II</label></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="note">
+                <p>* Subject P.E. can mess with buffs in a wine build; consider Subject English if using wine.</p>
+                <p>** Protects against sticky mobs but will delete the item upon death.</p>
+                <p>*** Prioritize putting Unbreaking IV on armor before weapons.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
